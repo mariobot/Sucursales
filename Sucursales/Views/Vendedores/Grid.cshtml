@@ -1,0 +1,59 @@
+﻿@model List<Sucursales.Models.Vendedores>
+
+@{
+    ViewBag.Title = "Grid";
+}
+
+
+<div class="form-horizontal">
+    <hr />
+    @using (Html.BeginForm("Filter", "Vendedores"))
+    {
+        <div class="form-group">
+            @Html.Label("Sucursal", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownList("Sucursal", (SelectList)ViewBag.Sucursales, htmlAttributes: new { @class = "form-control" })
+            </div>
+            <div>
+                <input type="submit" value="Consultar" class="btn btn-default" />
+                <a href="@Url.Action("ExportToExcel","Vendedores")" class="btn btn-default" >Exportar a Excel</a>
+            </div>
+        </div>
+    }
+</div>
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-lg-offset-1">
+            <table class="table table-responsive table-condensed">
+                <tr>
+                    <td><a href="@Url.Action("Grid","Vendedores",new { order="codigo"})">Codigo</a> </td>
+                    <td><a href="@Url.Action("Grid","Vendedores",new { order="identification"})">Identificador</a> </td>
+                    <td>TipoIdentificacion</td>
+                    <td><a href="@Url.Action("Grid","Vendedores",new { order="name"})">Nombre</a> </td>
+                    <td><a href="@Url.Action("Grid","Vendedores",new { order="surname"})">Apellido</a> </td>
+                    <td>CodigoCiudad</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.Codigo</td>
+                    <td>@item.Identificacion</td>
+                    <td>@item.TipoIdentificacion</td>
+                    <td>@item.Nombre</td>
+                    <td>@item.Apellido</td>
+                    <td>@item.Sucursal</td>
+                    <td><a href="@Url.Action("Edit","Vendedores",new { id = item.Codigo})">Editar</a></td>
+                    <td><a href="@Url.Action("Delete","Vendedores",new { id = item.Codigo})">Eliminar</a></td>
+                </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+}
+
+
+

@@ -1,0 +1,12 @@
+Nombre: Fernanda
+Apellido: Gomez
+Identificador: 2345432
+TipoDoc: Cedula
+Nombre: Fernanda
+Apellido: Gomez
+Identificador: 2345432
+TipoDoc: Cedula
+Nombre: Carolina
+Apellido: Mejia
+Identificador: 3334232
+TipoDoc: Cedula
